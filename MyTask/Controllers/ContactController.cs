@@ -8,7 +8,8 @@ namespace MyTask.Controllers
     {
      static List<Person>ContactList=new List<Person>();
         [HttpGet]
-        public ActionResult AllContact(string sortBy)
+       [HttpGet]
+        public ActionResult AllContact(string sortBy, string sortDirection)
         {
             var sortedContacts = ContactList;
 
@@ -17,16 +18,24 @@ namespace MyTask.Controllers
                 switch (sortBy.ToLower())
                 {
                     case "firstname":
-                        sortedContacts = sortedContacts.OrderBy(c => c.FirstName).ToList();
+                        sortedContacts = (sortDirection.ToLower() == "asc") ?
+                                         sortedContacts.OrderBy(c => c.FirstName).ToList() :
+                                         sortedContacts.OrderByDescending(c => c.FirstName).ToList();
                         break;
                     case "lastname":
-                        sortedContacts = sortedContacts.OrderBy(c => c.LastName).ToList();
+                        sortedContacts = (sortDirection.ToLower() == "asc") ?
+                                         sortedContacts.OrderBy(c => c.LastName).ToList() :
+                                         sortedContacts.OrderByDescending(c => c.LastName).ToList();
                         break;
                     case "email":
-                        sortedContacts = sortedContacts.OrderBy(c => c.Email).ToList();
+                        sortedContacts = (sortDirection.ToLower() == "asc") ?
+                                         sortedContacts.OrderBy(c => c.Email).ToList() :
+                                         sortedContacts.OrderByDescending(c => c.Email).ToList();
                         break;
                     case "phonenumber":
-                        sortedContacts = sortedContacts.OrderBy(c => c.PhoneNumber).ToList();
+                        sortedContacts = (sortDirection.ToLower() == "asc") ?
+                                         sortedContacts.OrderBy(c => c.PhoneNumber).ToList() :
+                                         sortedContacts.OrderByDescending(c => c.PhoneNumber).ToList();
                         break;
                     default:
                         break;
@@ -35,7 +44,6 @@ namespace MyTask.Controllers
 
             return View(sortedContacts);
         }
-
         [HttpGet]
         public ActionResult Update(int id)
         {
