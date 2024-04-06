@@ -1,0 +1,48 @@
+﻿@model MyTask.Models.Person
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <table class="table table-bordered">
+        <tr>
+            <td><label asp-for="Id"></label></td>
+            <td><input asp-for="Id" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="FirstName"></label></td>
+            <td>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="LastName"></label></td>
+            <td>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email"></label></td>
+            <td>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="PhoneNumber"></label></td>
+            <td>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Create" class="btn btn-outline-primary" />
+            </td>
+        </tr>
+    </table>
+</form>

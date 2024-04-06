@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Person>
+@{
+    ViewData["Title"] = "AllContact";
+}
+<div class="allcon">
+<h1>All Contact</h1>
+
+    <div class="dropdown">
+        <label for="sortBy">Sort By:</label>
+        <select id="sortBy">
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="email">Email</option>
+            <option value="phoneNumber">Phone Number</option>
+        </select>
+        <button id="sortButton" class="btn btn-primary">Click here to Sort</button>
+    </div>
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+
+        Create New
+    </a>
+</p>
+    
+</div>
+@if (!Model.Any())
+{
+    <h3>Not Found Contacts</h3>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Firs tName
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Operations
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        <a asp-action="Edit"
+                   asp-controller="Contact"
+                   asp-route-id="@item.Id"
+                   class="btn btn-outline-info">
+                            Details
+                        </a>
+                        <a asp-action="Update"
+                   asp-controller="Contact"
+                   asp-route-id="@item.Id"
+                   class="btn btn-outline-success">
+                            Edit Data
+                        </a>
+                        <a asp-action="Delete"
+                   asp-controller="Contact"
+                   asp-route-id="@item.Id"
+                   class="btn btn-outline-danger">
+                            Delete Person
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+</div>
+@section Scripts {
+    <script>
+        document.getElementById('sortButton').addEventListener('click', function () {
+            var selectedOption = document.getElementById('sortBy').value;
+            window.location.href = '?sortBy=' + selectedOption;
+        });
+    </script>
+}

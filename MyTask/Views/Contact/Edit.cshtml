@@ -1,0 +1,31 @@
+﻿@model Person
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="edt">
+<h1>Edit Person</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <td> <label asp-for="Id"></label></td>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <td> <label asp-for="FirstName"></label></td>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <td> <label asp-for="LastName"></label></td>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <td> <label asp-for="Email"></label></td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <td> <label asp-for="PhoneNumber"></label></td>
+        <td>@Model.PhoneNumber</td>
+    </tr>
+</table>
+<a asp-action="AllContact" type="submit"class="btn btn-outline-dark">back to list</a>
+</div>
