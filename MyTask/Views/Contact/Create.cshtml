@@ -1,9 +1,9 @@
-﻿@model MyTask.Models.Person
+@model MyTask.Models.Person
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
+<div class="createpg">
+<h1>Create New Contact</h1>
 <form asp-action="Create" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <table class="table table-bordered">
@@ -46,3 +46,4 @@
         </tr>
     </table>
 </form>
+</div>
