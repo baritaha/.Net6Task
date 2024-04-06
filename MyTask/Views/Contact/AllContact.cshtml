@@ -1,20 +1,32 @@
-﻿@model IEnumerable<Person>
+@model IEnumerable<Person>
 @{
     ViewData["Title"] = "AllContact";
 }
 <div class="allcon">
 <h1>All Contact</h1>
-
-    <div class="dropdown">
-        <label for="sortBy">Sort By:</label>
-        <select id="sortBy">
-            <option value="firstName">First Name</option>
-            <option value="lastName">Last Name</option>
-            <option value="email">Email</option>
-            <option value="phoneNumber">Phone Number</option>
-        </select>
-        <button id="sortButton" class="btn btn-primary">Click here to Sort</button>
+    <div class="drpos">
+        <div class="dropdown">
+            <label for="sortAsc">Sort Ascending By:</label>
+            <select id="sortAsc">
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="email">Email</option>
+                <option value="phoneNumber">Phone Number</option>
+            </select>
+            <button id="sortAscButton" class="btn btn-primary">Click here to Sort Ascending</button>
+        </div>
+        <div class="dropdown">
+            <label for="sortDesc">Sort Descending By:</label>
+            <select id="sortDesc">
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="email">Email</option>
+                <option value="phoneNumber">Phone Number</option>
+            </select>
+            <button id="sortDescButton" class="btn btn-primary">Click here to Sort Descending</button>
+        </div>
     </div>
+    
 <p>
     <a asp-action="Create" class="btn btn-primary">
 
@@ -22,7 +34,7 @@
     </a>
 </p>
     
-</div>
+
 @if (!Model.Any())
 {
     <h3>Not Found Contacts</h3>
@@ -94,9 +106,14 @@ else
 </div>
 @section Scripts {
     <script>
-        document.getElementById('sortButton').addEventListener('click', function () {
-            var selectedOption = document.getElementById('sortBy').value;
-            window.location.href = '?sortBy=' + selectedOption;
+        document.getElementById('sortAscButton').addEventListener('click', function () {
+            var selectedOption = document.getElementById('sortAsc').value;
+            window.location.href = '?sortBy=' + selectedOption + '&sortDirection=asc';
+        });
+
+        document.getElementById('sortDescButton').addEventListener('click', function () {
+            var selectedOption = document.getElementById('sortDesc').value;
+            window.location.href = '?sortBy=' + selectedOption + '&sortDirection=desc';
         });
     </script>
 }
