@@ -27,7 +27,7 @@ body {
 }
 .allcon, .edt,.updt h1, h3 {
     text-align: center;
-    background-color: rgb(0, 150, 255,0.3);
+    
     
 }
 .dropdown{
@@ -38,4 +38,11 @@ body {
 }
 .homepg h1{
     text-align:center;
+}
+.allcon h1 {
+    background-color:rgb(0, 150, 255);
+}
+.createpg h1 {
+    text-align: center;
+    background-color: rgb(0, 150, 255);
 }
